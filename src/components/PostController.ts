@@ -1,26 +1,23 @@
-import PostService from './PostService';
 import express from 'express';
+import PostService from './post.service';
 
 const router = express.Router();
-const postService = new PostService();
-router.get('/posts', (req, res) => {
-    const posts = postService.getPosts();
-    res.status(200).json(posts);
-}
-);
+const service = new PostService();
+router.get('/', (req,res) => {
+    res.json(service.getPosts());
+});
 
-router.post('/posts', (req, res) => {
-    const post = req.body;
-    postService.addPost(post);
-    res.status(201).json(post);
-}
-);
+router.post('/', (req,res) =>{
+    const newPost = req.body;
+    const addNewPost = service.addPost(newPost);
+    res.status(201).json(newPost);
+});
 
-router.patch('/posts/:id', (req, res) => {
-    const id = parseInt(req.params.id, 10); //?
+router.patch('/:id', (req, res) => {
+    const id = parseInt(req.params.id);
     const updatedPost = req.body;
-    postService.updatePost(id, updatedPost);
+    service.updatePost(id, updatedPost);
     res.status(200).json({ message: 'Post updated successfully' });
-}
-);
+});
+
 export default router;

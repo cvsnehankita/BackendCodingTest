@@ -9,7 +9,7 @@ export default class PostService {
     }
 
     addPost(post: Post): void {
-        post.id = this.idCounter + 1;
+        //post.id = this.idCounter + 1;
         this.posts.push(post);
     }
 
