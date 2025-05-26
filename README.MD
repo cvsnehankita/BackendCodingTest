@@ -21,4 +21,4 @@ A simple RESTful API built with Node.js and Express to manage posts and their li
 
 ## Run Options
 1. Run code in dev environment or local: npm run dev
-2. Run test cases: npm vitest 
+2. Run test cases: npx vitest run
